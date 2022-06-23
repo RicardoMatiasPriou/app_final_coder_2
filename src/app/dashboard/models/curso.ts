@@ -3,4 +3,5 @@ export interface curso {
   name:string;
   duracion:number;
   a_inscriptos:string[];
+  img:string;
 }

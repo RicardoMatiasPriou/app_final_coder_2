@@ -2,8 +2,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { AlumnosService } from '../../../service/alumnos-service.service';
-import { Alumno2, Alumno } from '../../../models/alumno';
+import { CursoServiceService } from '../../../service/curso-service.service';
+import { curso } from '../../../models/curso';
 import {
   MatDialog,
   MatDialogRef,
@@ -19,13 +19,13 @@ export class ListComponent implements OnInit {
   register = localStorage.getItem('reg') == 'true' ? false : true;
   name: string;
   animal: boolean;
-  data: Alumno;
-  alumnosList: Alumno[];
-  displayedColumns: string[] = ['first_name', 'last_name', 'age', 'actions'];
+  data: curso;
+  alumnosList: curso[];
+  displayedColumns: string[] = ['name', 'duracion', 'a_inscriptos', 'actions'];
   admin = localStorage.getItem('admin') == 'true' ? true : false
 
   constructor(
-    private usersService: AlumnosService,
+    private usersService: CursoServiceService,
     private route: Router,
     public dialog: MatDialog
   ) {}
@@ -87,7 +87,7 @@ export class ListComponent implements OnInit {
     });
     setTimeout(() => {
       const dialogRef = this.dialog.open(DialogOverviewExampleDialogC, {
-        data: { animal: this.animal, data: this.data },
+        data: this.data ,
       });
 
       dialogRef.afterClosed().subscribe((result) => {
@@ -96,7 +96,7 @@ export class ListComponent implements OnInit {
   }
 
   updateUser(id: number) {
-    this.route.navigate(['/dashboard/alumnos-list/', id]);
+    this.route.navigate(['/dashboard/cursos/edit/', id]);
   }
 }
 
@@ -109,8 +109,7 @@ export class DialogOverviewExampleDialogC {
   constructor(
     private route: Router,
     public dialogRef: MatDialogRef<DialogOverviewExampleDialogC>,
-    @Inject(MAT_DIALOG_DATA) public data: Alumno2
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: curso  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();

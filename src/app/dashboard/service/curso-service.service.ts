@@ -7,6 +7,8 @@ import { curso } from '../models/curso';
   providedIn: 'root'
 })
 export class CursoServiceService {
+  AlumnoDetailed:curso;
+
   root_url='https://62a7cc4797b6156bff931c13.mockapi.io/api/v1/cursos/'
   configurationOptions={
     headers: new HttpHeaders({
