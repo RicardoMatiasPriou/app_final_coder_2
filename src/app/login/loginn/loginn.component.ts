@@ -18,17 +18,15 @@ export class LoginnComponent implements OnInit {
   };
   alumnosList: Alumno[];
 
-
   constructor(
     private AuthService: AuthService,
     private route: Router,
-    private AlumnosService:AlumnosService
-  )
-  {}
+    private AlumnosService: AlumnosService
+  ) {}
 
   ngOnInit(): void {
-    this.AuthService.logOut()
-    this.getUsers()
+    this.AuthService.logOut();
+    this.getUsers();
   }
   getUsers() {
     this.AlumnosService.getAlumnosList().subscribe((data) => {
@@ -39,22 +37,20 @@ export class LoginnComponent implements OnInit {
   Ingresar() {
     console.log(this.usuario);
     const { email, password } = this.usuario;
+
     this.AuthService.login(email, password).then((res) => {
-      localStorage.setItem('log', 'true')
+      localStorage.setItem('log', 'true');
 
-      this.alumnosList.forEach(e=>{
-        if(res?.user?.email==e.email){
-          localStorage.setItem('reg', 'true')
+      this.alumnosList.forEach((e) => {
+        if (res?.user?.email == e.email) {
+          localStorage.setItem('reg', 'true');
 
-          if(e.admin==true){
-            localStorage.setItem('admin', 'true')
-          }else{
-            localStorage.setItem('admin', 'false')
+          if (e.admin == true) {
+            localStorage.setItem('admin', 'true');
           }
-        }else{
-          localStorage.setItem('reg', 'false')
         }
-      })
+
+      });
       this.route.navigate(['dashboard']);
     });
   }
@@ -64,32 +60,29 @@ export class LoginnComponent implements OnInit {
     const { email, password } = this.usuario;
 
     this.AuthService.loginWhitGoogle(email, password).then((res) => {
-      localStorage.setItem('log', 'true')
+      localStorage.setItem('log', 'true');
 
-      this.alumnosList.forEach(e=>{
-        if(res?.user?.email==e.email){
-          localStorage.setItem('reg', 'true')
-          if(e.admin==true){
-            localStorage.setItem('admin', 'true')
-          }else{
-          localStorage.setItem('admin', 'false')
+
+        this.alumnosList.forEach((e) => {
+          if (res?.user?.email == e.email) {
+            localStorage.setItem('reg', 'true');
+            if (e.admin == true) {
+              localStorage.setItem('admin', 'true');
+            }
           }
-        }else{
-          localStorage.setItem('reg', 'false')
-        }
-      })
+        });
 
       this.route.navigate(['dashboard']);
     });
   }
 
   obtnerUsuarioLogeado() {
-    this.AuthService.getUserLoged().subscribe((res) => {    this.route.navigate(['dashboard']);
-  });
+    this.AuthService.getUserLoged().subscribe((res) => {
+      this.route.navigate(['dashboard']);
+    });
   }
 
   logOut() {
     this.AuthService.logOut();
   }
-
 }

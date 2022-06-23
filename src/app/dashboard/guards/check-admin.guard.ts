@@ -11,9 +11,9 @@ export class CheckAdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const user = localStorage.getItem('reg')
+      const user = localStorage.getItem('admin')
 
-      const isAutenticated = user == 'true' ? false : true;
+      const isAutenticated = user == 'true' ? true : false;
 
       if (!isAutenticated) {
         alert('No tienes permisos para acceder a esta paguina');

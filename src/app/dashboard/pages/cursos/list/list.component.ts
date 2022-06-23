@@ -15,7 +15,7 @@ import {
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class AlumnosListComponent implements OnInit {
+export class ListComponent implements OnInit {
   register = localStorage.getItem('reg') == 'true' ? false : true;
   name: string;
   animal: boolean;
@@ -86,7 +86,7 @@ export class AlumnosListComponent implements OnInit {
       this.data = data;
     });
     setTimeout(() => {
-      const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      const dialogRef = this.dialog.open(DialogOverviewExampleDialogC, {
         data: { animal: this.animal, data: this.data },
       });
 
@@ -102,13 +102,13 @@ export class AlumnosListComponent implements OnInit {
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////
 @Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-elements-example-dialog.html',
+  selector: 'dialog-overview-example-dialogC',
+  templateUrl: 'dialog-elements-example-dialogC.html',
 })
-export class DialogOverviewExampleDialog {
+export class DialogOverviewExampleDialogC {
   constructor(
     private route: Router,
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialogC>,
     @Inject(MAT_DIALOG_DATA) public data: Alumno2
   ) {}
 
