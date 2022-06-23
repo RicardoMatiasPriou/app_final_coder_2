@@ -12,16 +12,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class EditComponent implements OnInit {
   cursosList: curso[];
   user:curso
+  id=this.rutaActiva.snapshot.params['id']
   CursosForm = this.fb.group({
     Name: [null, Validators.required],
     Duracion: [null, Validators.required],
   });
-    id=this.rutaActiva.snapshot.params['id']
   constructor(private fb: FormBuilder, private rute:Router,  private CursoServiceService:CursoServiceService, private rutaActiva: ActivatedRoute) {}
   ngOnInit(): void {
     this.getCursos()
-    console.log(this.id);
-
   }
   getCursos() {
     this.CursoServiceService.getAlumnosList().subscribe((data) => {
@@ -36,22 +34,6 @@ export class EditComponent implements OnInit {
     });
   }
   onSubmit(): void {
-
-    // console.log(this.cursosList);
-
-    // const totalDeUsusarios: number = this.cursosList.length + 2;
-    // let user = {
-    //   name: this.CursosForm.controls['Name']?.value,
-    //   duracion: this.CursosForm.controls['Duracion']?.value,
-    //   id: totalDeUsusarios,
-    //   img:"",
-    //   a_inscriptos:[]
-    // };
-    // console.log(user);
-
-    // this.CursoServiceService.createAlumno(user).subscribe((data) => {
-    //   this.rute.navigate(['/dashboard/cursos']);
-    // });
     let userToUpdate=this.user;
     userToUpdate.name=this.CursosForm.controls['Name']?.value;
     userToUpdate.duracion=this.CursosForm.controls['Duracion']?.value;

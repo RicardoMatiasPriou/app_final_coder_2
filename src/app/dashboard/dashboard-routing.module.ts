@@ -10,13 +10,14 @@ import { CheckAdminGuard } from './guards/check-admin.guard';
 import { ListComponent } from './pages/cursos/list/list.component';
 import { EditComponent } from './pages/cursos/edit/edit.component';
 import { NewComponent } from './pages/cursos/new/new.component';
+import { AlumnosEditComponent } from './pages/alumnos-edit/alumnos-edit.component';
 
 const routes: Routes = [
   {path:'', canActivate:[CheckloginGuardash],component:SidenavComponent,
     children:[
       {path:'', component:AlumnosListComponent},
       {path:'alumnos-list', component:AlumnosListComponent},
-      {path:'alumnos-list/:id', component:AlumnosDetailsComponent},
+      {path:'alumnos-list/:id', component:AlumnosEditComponent},
       {path:'alumnos-new',canActivate:[CheckRegisterGuard], component:AlumnosNewComponent},
       {path:'cursos', component:ListComponent},
       {path:'cursos/edit/:id', component:EditComponent},

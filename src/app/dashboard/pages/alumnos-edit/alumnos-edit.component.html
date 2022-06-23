@@ -1,1 +1,60 @@
-<p>alumnos-edit works!</p>
+<form [formGroup]="AlumnoForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Editar Alumno</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nombre" formControlName="first_name" />
+            <mat-error *ngIf="AlumnoForm.controls['first_name'].hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="Apellido"
+              formControlName="last_name"
+            />
+            <mat-error
+              *ngIf="AlumnoForm.controls['last_name'].hasError('required')"
+            >
+              El apellido es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Edad" type="number" formControlName="age" />
+            <mat-error *ngIf="AlumnoForm.controls['age'].hasError('required')">
+              La edad es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="URL de la imagen"
+              formControlName="img"
+            />
+            <mat-error
+              *ngIf="AlumnoForm.controls['img'].hasError('required')"
+            >
+              La imagenURL es  <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
