@@ -6,19 +6,26 @@ import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
 import { MaterialModule } from './material/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingComponent } from './landing/landing.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { FormpruevaComponent } from './formprueva/formprueva.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LandingComponent
+    LandingComponent,
+    FormpruevaComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,13 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

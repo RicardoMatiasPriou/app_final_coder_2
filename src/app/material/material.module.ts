@@ -12,6 +12,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   exports: [
@@ -29,6 +31,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatMenuModule,
     MatSidenavModule,
     MatDialogModule,
+    MatSelectModule,
+    MatRadioModule,
 
   ],
 })

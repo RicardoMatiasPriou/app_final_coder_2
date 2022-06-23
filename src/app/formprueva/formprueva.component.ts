@@ -1,27 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CursoServiceService } from '../../../service/curso-service.service';
-import { curso } from '../../../models/curso';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-new',
-  templateUrl: './new.component.html',
-  styleUrls: ['./new.component.css']
+  selector: 'app-formprueva',
+  templateUrl: './formprueva.component.html',
+  styleUrls: ['./formprueva.component.css']
 })
-export class NewComponent implements OnInit {
-  cursosList: curso[];
-
-  CursosForm = this.fb.group({
-    Name: [null, Validators.required],
-    Duracion: [null, Validators.required],
-
-    // postalCode: [null, Validators.compose([
-    //   Validators.required, Validators.minLength(5), Validators.maxLength(5)])
-    // ],
-
+export class FormpruevaComponent {
+  addressForm = this.fb.group({
+    company: null,
+    firstName: [null, Validators.required],
+    lastName: [null, Validators.required],
+    address: [null, Validators.required],
+    address2: null,
+    city: [null, Validators.required],
+    state: [null, Validators.required],
+    postalCode: [null, Validators.compose([
+      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
+    ],
+    shipping: ['free', Validators.required]
   });
 
+  hasUnitNumber = false;
 
   states = [
     {name: 'Alabama', abbreviation: 'AL'},
@@ -85,36 +85,9 @@ export class NewComponent implements OnInit {
     {name: 'Wyoming', abbreviation: 'WY'}
   ];
 
-  constructor(private fb: FormBuilder, private rute:Router,  private CursoServiceService:CursoServiceService) {}
-  ngOnInit(): void {
-    this.getCursos()
-  }
-  getCursos() {
-    this.CursoServiceService.getAlumnosList().subscribe((data) => {
-      this.cursosList = data;
-    });
-  }
+  constructor(private fb: FormBuilder) {}
+
   onSubmit(): void {
-    console.log(this.cursosList);
-
-    const totalDeUsusarios: number = this.cursosList.length + 2;
-    let user = {
-      name: this.CursosForm.controls['Name']?.value,
-      duracion: this.CursosForm.controls['Duracion']?.value,
-      id: totalDeUsusarios,
-      img:"",
-      a_inscriptos:[]
-    };
-    console.log(user);
-
-    this.CursoServiceService.createAlumno(user).subscribe((data) => {
-      this.rute.navigate(['/dashboard/cursos']);
-    });
-
-
-
-
-
-    alert('Curso Agregado');
+    alert('Thanks!');
   }
 }

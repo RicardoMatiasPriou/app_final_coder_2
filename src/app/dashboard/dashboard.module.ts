@@ -10,7 +10,7 @@ import { MaterialModule } from '../material/material.module';
 import { AlumnosDetailsComponent } from './pages/alumnos-details/alumnos-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListComponent, DialogOverviewExampleDialogC } from './pages/cursos/list/list.component';
 import { AlumnosListComponent, DialogOverviewExampleDialog } from './pages/alumnos-list/alumnos-list.component';
 import { NewComponent } from './pages/cursos/new/new.component';
@@ -35,7 +35,8 @@ import { NewComponent } from './pages/cursos/new/new.component';
     CommonModule,
     DashboardRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }

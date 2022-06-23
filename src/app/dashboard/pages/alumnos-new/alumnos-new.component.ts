@@ -76,6 +76,8 @@ export class AlumnosNewComponent implements OnInit {
     localStorage.setItem('log', 'true')
     this.AlumnosService.createAlumno(user).subscribe((data) => {
       this.rute.navigate(['/dashboard/alumnos-list']);
+      alert('Te registraste con exito');
+
     });
   }
 }
