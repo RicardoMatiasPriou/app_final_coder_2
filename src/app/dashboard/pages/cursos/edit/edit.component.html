@@ -1,1 +1,33 @@
-<p>edit works!</p>
+<form [formGroup]="CursosForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>AgregarCurso</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Curso Nombre" formControlName="Name">
+            <mat-error *ngIf="CursosForm.controls['Name'].hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="number" placeholder="Duracion en semanas" formControlName="Duracion">
+            <mat-error *ngIf="CursosForm.controls['Duracion'].hasError('required')">
+              Te duracion is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
