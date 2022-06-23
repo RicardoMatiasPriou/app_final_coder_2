@@ -1,0 +1,26 @@
+<div class="conteiner">
+  <div class="card text-center">
+    <div class="card-header">
+      <b>REGISTARSE</b>
+    </div>
+    <div class="card-body p-4" *ngIf="!usuarioRegistrados ">
+      <label class="label-login" for="">Nombre</label>
+      <input class="form-control  m-2 " type="text" placeholder="Ingrese su Nombre" [(ngModel)]="Alumno.first_name">
+
+      <label class="label-login" for="">Apellido</label>
+      <input class="form-control  m-2 " type="text" placeholder="Ingrese su Apellido" [(ngModel)]="Alumno.last_name">
+
+      <label class="label-login" for="">Edad</label>
+      <input class="form-control  m-2 " type="number" placeholder="Ingrese su Edad" [(ngModel)]="Alumno.age">
+
+      <button class="btn btn-primary btn-block m-2" (click)="addUser()">Registrarse</button>
+
+
+      <a class="btn btn-primary" routerLink="/dashboard/alumnos-list">Ingresar</a>
+
+    </div>
+    <div class="card-body p-4" *ngIf="usuarioRegistrados">
+      <h1 class=" text-success">Usted ya se encuntra registrado</h1>
+      <a class=" btn btn-block btn-success" routerLink="/dashboard/alumnos-list" >VOLVER A LA LISTA</a>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+
+.conteiner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.btn-block{
+  display: block;
+  width: 100%;
+}
+.label-login{
+  float: left;
+}

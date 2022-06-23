@@ -1,0 +1,144 @@
+<!-- <nav class="navbar bg-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://play-lh.googleusercontent.com/TE8bBgkcfR973q3qHR1Sa5_v6sOJsWJbMgOPVwF2yglUs6F_pUrxwCni6KJO2tyw7g" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      My APP
+    </a>
+    <a class="navbar-brand" href="#" *ngIf="userLogged|async as user">
+      <img *ngIf="user.photoURL" src="{{user.photoURL}}"  class="rounded-circle arreglo-de-tamaño">
+      {{user.email}}
+    </a>
+  </div>
+
+</nav> -->
+
+<!-- <nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav metismenu" id="side-menu">
+      <li class="nav-header" *ngIf="userLogged|async as user">
+        <div class="dropdown profile-element">
+          <img *ngIf="user.photoURL" src="{{user.photoURL}}"  class="rounded-circle arreglo-de-tamaño">
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="block m-t-xs font-bold">Ricardo M. P. Borla</span>
+            <span class="text-muted text-xs block"
+              >Administrador <b class="caret"></b
+            ></span>
+          </a>
+          <ul class="dropdown-menu animated fadeInRight m-t-xs">
+            <li><a class="dropdown-item" href="profile.html">PROXIMAMENTE</a></li>
+            <li>
+              <a class="dropdown-item" href="contacts.html">PROXIMAMENTE</a>
+            </li>
+            <li><a class="dropdown-item" href="mailbox.html">PROXIMAMENTE</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="login.html">PROXIMAMENTE</a></li>
+          </ul>
+        </div>
+        <div class="logo-element">R. P. B.</div>
+      </li>
+      <li class="active">
+        <a href=""
+          ><i class="fa-solid fa-ban"></i>
+          <span class="nav-label">Alumnos</span>
+          <span class="fa arrow"></span
+        ></a>
+        <ul class="nav nav-second-level">
+          <li class="active"><a href="">PROXIMAMENTE</a></li>
+          <li><a href="">PROXIMAMENTE</a></li>
+          <li><a href="">PROXIMAMENTE</a></li>
+          <li><a href="">PROXIMAMENTE</a></li>
+          <li><a href="">PROXIMAMENTE </a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav> -->
+<nav class="navbar bg-dark fixed-top" [ngClass]="{'d-none':userLogged|async }">
+  <div class="container-fluid">
+    <div class="dropdown navbar-brand"*ngIf="userLogged|async as user; else elseBlock2">
+      <a
+        href="#"
+        class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-light text-decoration-none dropdown-toggle"
+        id="dropdownNavLink"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJmLBRjMhcvDtHgBwpMkryhwwmLbN91Yez3w&usqp=CAU"
+          alt="mdo"
+          width="50"
+          height="50"
+          class="rounded-circle"
+        />
+        <span class="m-2">Bear Academy</span>
+      </a>
+      <ul
+        class="dropdown-menu text-small shadow"
+        aria-labelledby="dropdownNavLink"
+      >
+        <li>
+          <a class="dropdown-item active" href="#" aria-current="page"
+            >Overview</a
+          >
+        </li>
+        <li><a class="dropdown-item" href="#">Inventory</a></li>
+        <li><a class="dropdown-item" href="#">Customers</a></li>
+        <li><a class="dropdown-item" href="#">Products</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item" href="#">Reports</a></li>
+        <li><a class="dropdown-item" href="#">Analytics</a></li>
+      </ul>
+    </div>
+
+
+
+    <!-- //////////////////////////////////////////// //////////////////////////////////////////////////-->
+    <ng-template #elseBlock2>
+      <div class="dropdown navbar-brand">
+        <a
+        style="text-decoration: none;color: white;"
+          routerLink=""
+        >
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJmLBRjMhcvDtHgBwpMkryhwwmLbN91Yez3w&usqp=CAU"
+            alt="mdo"
+            width="50"
+            height="50"
+            class="rounded-circle"
+          />
+          <span class="m-2">Bear Academy</span>
+        </a>
+        </div>
+    </ng-template>
+
+
+
+
+    <div class="dropdown navbar-brand " *ngIf="userLogged|async as user; else elseBlock">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <img
+        src="{{user.photoURL}}"
+        alt="mdo"
+        width="40"
+        height="40"
+        class="rounded-circle"
+      />
+      </button>
+      <mat-menu #menu="matMenu">
+
+        <button mat-menu-item (click)="logOut()">
+          <mat-icon>logout</mat-icon>
+          <span >Log out</span>
+        </button>
+      </mat-menu>
+    </div>
+    <ng-template #elseBlock  class="dropdown navbar-brand " >
+      <button mat-raised-button style="background-color:rgb(40, 226, 40); color: white;" routerLink="login">
+        <mat-icon >login</mat-icon>
+        <span>Login</span>
+      </button>
+    </ng-template>
+  </div>
+
+</nav>
+
