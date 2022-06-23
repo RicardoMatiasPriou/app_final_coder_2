@@ -21,7 +21,6 @@ export class AlumnosNewComponent implements OnInit {
       console.log(auth);
       this.userLogged = auth;
     });
-
   }
   usuarioRegistrados: boolean;
   alumnosListEmail: string[] = [];
@@ -33,18 +32,18 @@ export class AlumnosNewComponent implements OnInit {
     age: 0,
     img: '',
     cursos_realizados: ['', ''],
+    admin:false
   };
-  a:any
+  a: any;
   userLogged: any;
 
   ngOnInit(): void {
-    this.getUsers()
+    this.getUsers();
   }
-   getUsers() {
+  getUsers() {
     this.AlumnosService.getAlumnosList().subscribe((data) => {
       this.alumnosList = data;
       this.usuarioRegistrado();
-
     });
   }
   usuarioRegistrado() {
@@ -71,13 +70,15 @@ export class AlumnosNewComponent implements OnInit {
       img: this.userLogged.photoURL,
       cursos_realizados: [],
       email: this.userLogged.email,
-      admin:false
+      admin: false,
     };
-    localStorage.setItem('log', 'true')
+    localStorage.setItem('log', 'true');
     this.AlumnosService.createAlumno(user).subscribe((data) => {
       this.rute.navigate(['/dashboard/alumnos-list']);
       alert('Te registraste con exito');
-
+      localStorage.setItem('reg', 'true');
     });
   }
+
+
 }

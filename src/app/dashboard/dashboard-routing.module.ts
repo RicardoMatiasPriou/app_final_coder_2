@@ -11,6 +11,7 @@ import { ListComponent } from './pages/cursos/list/list.component';
 import { EditComponent } from './pages/cursos/edit/edit.component';
 import { NewComponent } from './pages/cursos/new/new.component';
 import { AlumnosEditComponent } from './pages/alumnos-edit/alumnos-edit.component';
+import { UserListComponent } from './pages/user/user-list/user-list.component';
 
 const routes: Routes = [
   {path:'', canActivate:[CheckloginGuardash],component:SidenavComponent,
@@ -21,7 +22,9 @@ const routes: Routes = [
       {path:'alumnos-new',canActivate:[CheckRegisterGuard], component:AlumnosNewComponent},
       {path:'cursos', component:ListComponent},
       {path:'cursos/edit/:id', component:EditComponent},
-      {path:'cursos/new',canActivate:[CheckAdminGuard], component:NewComponent}
+      {path:'cursos/new',canActivate:[CheckAdminGuard], component:NewComponent},
+      {path:'users', component:UserListComponent},
+
     ]
   }
 ];

@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListComponent, DialogOverviewExampleDialogC } from './pages/cursos/list/list.component';
 import { AlumnosListComponent, DialogOverviewExampleDialog } from './pages/alumnos-list/alumnos-list.component';
 import { NewComponent } from './pages/cursos/new/new.component';
+import { UserListComponent } from './pages/user/user-list/user-list.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { NewComponent } from './pages/cursos/new/new.component';
     DialogOverviewExampleDialog,
     DialogOverviewExampleDialogC,
     NewComponent,
-    SidenavComponent
+    SidenavComponent,
+    UserListComponent
   ],
   imports: [
     MaterialModule,
