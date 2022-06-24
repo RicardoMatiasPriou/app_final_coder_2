@@ -20,7 +20,7 @@
       <p>Email: {{data.data.email}}</p>
       <p>Edad: {{data.data.age}}</p>
       <p><strong>Incripto en :</strong></p>
-      <div ngIf="cursoList " *ngFor="let curso of cursosList">
+      <div  *ngFor="let curso of cursosList">
         <div *ngFor="let e of curso.a_inscriptos">
           <span *ngIf="e==data.data.email">{{curso.name}} </span>
         </div>
