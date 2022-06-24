@@ -21,7 +21,7 @@ const routes: Routes = [
       {path:'alumnos-list/:id', component:AlumnosEditComponent},
       {path:'alumnos-new',canActivate:[CheckRegisterGuard], component:AlumnosNewComponent},
       {path:'cursos', component:ListComponent},
-      {path:'cursos/edit/:id', component:EditComponent},
+      {path:'cursos/edit/:id', component:EditComponent ,canActivate:[CheckAdminGuard]},
       {path:'cursos/new',canActivate:[CheckAdminGuard], component:NewComponent},
       {path:'users', component:UserListComponent},
 

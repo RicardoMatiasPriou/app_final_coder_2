@@ -1,3 +1,4 @@
+import { curso } from './curso';
 export interface Alumno {
   id:number;
   first_name:string;

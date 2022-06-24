@@ -28,14 +28,19 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef style="text-align:end;">Actions</th>
           <td mat-cell *matCellDef="let student " style="text-align: end;">
+            <button mat-Tooltip="Ver detalles" (click)="SubscribeUser(student.id)"   type="button" mat-icon-button>
+                <mat-icon data-bs-toggle="tooltip" title="Inscribirse"> group_add</mat-icon>
+            </button>
             <button mat-Tooltip="Ver detalles" (click)="goToUserById(student.id)"  type="button" mat-icon-button>
-              <mat-icon> visibility</mat-icon>
+              <mat-icon data-bs-toggle="tooltip" title="Ver detalles"> visibility</mat-icon>
             </button>
             <button mat-Tooltip="Ver detalles" class="text-danger" *ngIf="admin" (click)="deleteUser(student.id)"  type="button" mat-icon-button>
-              <mat-icon> delete</mat-icon>
+              <mat-icon data-bs-toggle="tooltip" title="Eliminar"> delete</mat-icon>
             </button>
-            <button mat-Tooltip="Ver detalles" (click)="updateUser(student.id)" *ngIf="admin" type="button" mat-icon-button>
-              <mat-icon> edit</mat-icon>
+
+
+            <button mat-Tooltip="Ver detalles" (click)="updateUser(student.id)" *ngIf="admin" type="button"  mat-icon-button>
+              <mat-icon data-bs-toggle="tooltip" title="Editar"> edit</mat-icon>
             </button>
           </td>
         </ng-container>

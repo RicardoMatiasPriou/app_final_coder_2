@@ -15,6 +15,7 @@ import { ListComponent, DialogOverviewExampleDialogC } from './pages/cursos/list
 import { AlumnosListComponent, DialogOverviewExampleDialog } from './pages/alumnos-list/alumnos-list.component';
 import { NewComponent } from './pages/cursos/new/new.component';
 import { UserListComponent } from './pages/user/user-list/user-list.component';
+import { SuscriveComponent } from './pages/cursos/suscrive/suscrive.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { UserListComponent } from './pages/user/user-list/user-list.component';
     DialogOverviewExampleDialogC,
     NewComponent,
     SidenavComponent,
-    UserListComponent
+    UserListComponent,
+    SuscriveComponent
   ],
   imports: [
     MaterialModule,

@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { AlumnosService } from '../../service/alumnos-service.service';
 import { Alumno, Alumno2 } from '../../models/alumno';
 import { Router } from '@angular/router';
+import { CursoServiceService } from '../../service/curso-service.service';
+import { curso } from '../../models/curso';
 import {
   MatDialog,
   MatDialogRef,
@@ -20,32 +22,28 @@ export class AlumnosListComponent implements OnInit {
   data: Alumno;
   alumnosList: Alumno[];
   displayedColumns: string[] = ['first_name', 'last_name', 'age', 'actions'];
-  admin = localStorage.getItem('admin') == 'true' ? true : false
-
+  admin = localStorage.getItem('admin') == 'true' ? true : false;
   constructor(
     private usersService: AlumnosService,
     private route: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
     this.getUsers();
     console.log(this.alumnosList);
-    if(this.register){
-      alert('debes registrarte pimero :)')
-      this.route.navigate(['/dashboard/alumnos-new'])
-      console.log("esta escrito a posta pimero porque me aburria");
-
+    if (this.register) {
+      alert('debes registrarte pimero :)');
+      this.route.navigate(['/dashboard/alumnos-new']);
+      console.log('esta escrito a posta pimero porque me aburria');
     }
   }
 
-
   getUsers() {
     this.usersService.getAlumnosList().subscribe((data) => {
-      console.log(data[0]);
       this.alumnosList = data;
-      console.log(this.alumnosList);
     });
+
   }
 
   getUserDetails(id: number) {
@@ -57,8 +55,6 @@ export class AlumnosListComponent implements OnInit {
       console.log(this.data);
     }, 1000);
   }
-
-
 
   // updateUser(user: Alumno) {
   //   let userToUpdate = user;
@@ -88,8 +84,7 @@ export class AlumnosListComponent implements OnInit {
         data: { animal: this.animal, data: this.data },
       });
 
-      dialogRef.afterClosed().subscribe((result) => {
-      });
+      dialogRef.afterClosed().subscribe((result) => {});
     }, 400);
   }
 
@@ -107,9 +102,16 @@ export class DialogOverviewExampleDialog {
   constructor(
     private route: Router,
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: Alumno2
+    @Inject(MAT_DIALOG_DATA) public data: Alumno2,
+    private CursoServiceService:CursoServiceService
   ) {}
+  cursosList: curso[];
 
+  ngOnInit(): void {
+    this.CursoServiceService.getAlumnosList().subscribe((data) => {
+      this.cursosList = data;
+    });
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }
